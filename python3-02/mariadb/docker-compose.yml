@@ -1,0 +1,19 @@
+services:
+  db:
+    image: mariadb:latest
+    container_name: mariadb_container
+    env_file: 
+      - ../.env  # Local onde está o arquivo .env
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+    networks: 
+      - shared_network
+
+volumes: 
+  db_data: 
+  
+networks: 
+  shared_network: 
+    external: true
